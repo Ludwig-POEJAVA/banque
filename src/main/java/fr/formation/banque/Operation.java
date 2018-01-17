@@ -55,6 +55,11 @@ public class Operation
 	/******************************************************************************************************************
 	 * GETTERS SETTERS
 	 *****************************************************************************************************************/
+	public double getMontant()
+	{
+		return (credit - debit) / 100;
+	}
+
 	public void setMontant(double montant)
 	{
 		if (montant < 0)
@@ -78,25 +83,25 @@ public class Operation
 
 	}
 
-	public int getCredit()
+	private int getCredit()
 	{
 		// return montant > 0 ? (-montant * 100) : 0;
 		return credit;
 	}
 
-	public void setCredit(int credit)
+	private void setCredit(int credit)
 	{
 		this.credit = credit;
 		System.out.println("setcred" + credit + "  " + this.credit);
 	}
 
-	public int getDebit()
+	private int getDebit()
 	{
 		// return montant < 0 ? (-montant * 100) : 0;
 		return debit;
 	}
 
-	public void setDebit(int debit)
+	private void setDebit(int debit)
 	{
 		this.debit = debit;
 	}
@@ -132,10 +137,5 @@ public class Operation
 	public void setLibelle(String libelle)
 	{
 		this.libelle = libelle;
-	}
-
-	public double getMontant()
-	{
-		return (credit - debit) / 100;
 	}
 }
