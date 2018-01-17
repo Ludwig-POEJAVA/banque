@@ -23,7 +23,7 @@ public class Enregistrement extends Operation
 	public double getMontant()
 	{
 		{
-			return (getCredit() - getDebit()) / 100.;
+			return (getCredit() - getDebit()) / 100.0;
 		}
 	}
 
