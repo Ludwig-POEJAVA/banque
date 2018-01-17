@@ -9,19 +9,7 @@ public class Virement extends Operation
 	 *****************************************************************************************************************/
 	public Virement()
 	{
-		this.typeOperation = TypeOperation.TYPE_VIREMENT;
-	}
-
-	public Virement(double montant)
-	{
-		super(montant);
-		this.typeOperation = TypeOperation.TYPE_VIREMENT;
-	}
-
-	public Virement(String libelle, double montant)
-	{
-		super(libelle, montant);
-		this.typeOperation = TypeOperation.TYPE_VIREMENT;
+		super();
 	}
 
 	/******************************************************************************************************************
@@ -35,5 +23,10 @@ public class Virement extends Operation
 	public void setMontant(double montant)
 	{
 		setDebit((int) (-montant * 100));
+	}
+
+	public int getTypeOperation()
+	{
+		return TypeOperation.TYPE_VIREMENT;
 	}
 }

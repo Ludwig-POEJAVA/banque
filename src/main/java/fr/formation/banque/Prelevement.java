@@ -9,19 +9,7 @@ public class Prelevement extends Operation
 	 *****************************************************************************************************************/
 	public Prelevement()
 	{
-		this.typeOperation = TypeOperation.TYPE_PRELEVEMENT;
-	}
-
-	public Prelevement(double montant)
-	{
-		super(montant);
-		this.typeOperation = TypeOperation.TYPE_PRELEVEMENT;
-	}
-
-	public Prelevement(String libelle, double montant)
-	{
-		super(libelle, montant);
-		this.typeOperation = TypeOperation.TYPE_PRELEVEMENT;
+		super();
 	}
 
 	/******************************************************************************************************************
@@ -35,5 +23,10 @@ public class Prelevement extends Operation
 	public void setMontant(double montant)
 	{
 		setDebit((int) (-montant * 100));
+	}
+
+	public int getTypeOperation()
+	{
+		return TypeOperation.TYPE_PRELEVEMENT;
 	}
 }

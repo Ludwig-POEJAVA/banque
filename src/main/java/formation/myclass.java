@@ -2,7 +2,7 @@ package formation;
 
 import java.util.ArrayList;
 
-import fr.formation.banque.Enregistrement;
+import fr.formation.banque.Depot;
 import fr.formation.banque.Operation;
 import fr.formation.banque.Prelevement;
 import fr.formation.banque.TypeOperation;
@@ -16,12 +16,12 @@ public class myclass
 
 		ArrayList<Operation> operations = new ArrayList<Operation>();
 
-		operations.add(new Enregistrement("enreg", 12.34));
-		operations.add(new Enregistrement("enreg", -56.78));
-		operations.add(new Virement("vire", 111.11));
-		operations.add(new Virement("vire", -222.22));
-		operations.add(new Prelevement("preleve", 333.33));
-		operations.add(new Prelevement("preleve", -444.44));
+		operations.add(new Depot("libelle enregistrement -", 12.34));
+		operations.add(new Depot("libelle enregistrement -", -56.78));
+		operations.add(new Virement("libelle virement +", 111.11));
+		operations.add(new Virement("libelle virement -", -222.22));
+		operations.add(new Prelevement("libelle prelevement+", 333.33));
+		operations.add(new Prelevement("libelle prelevement -", -444.44));
 
 		System.out.println("");
 

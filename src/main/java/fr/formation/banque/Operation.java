@@ -11,8 +11,11 @@ public abstract class Operation implements IOperation
 	private int credit = 0; // valeur en unité miniamle de monnaie 1 = 0.01€
 	private int debit = 0;// valeur en unité miniamle de monnaie 1 = 0.01€
 
-	protected int typeOperation = TypeOperation.TYPE_CB;
+	// private int typeOperation = TypeOperation.TYPE_CB;
 
+	/******************************************************************************************************************
+	 * CONSTRUCTORS
+	 *****************************************************************************************************************/
 	public Operation()
 	{
 		setDateOperation(new Date());
@@ -21,9 +24,12 @@ public abstract class Operation implements IOperation
 		debit = 0;
 	}
 
-	/******************************************************************************************************************
-	 * CONSTRUCTORS
-	 *****************************************************************************************************************/
+	Operation(int typeOperation)
+	{
+		this();
+		this.typeOperation = typeOperation;
+	}
+
 	Operation(double montant)
 	{
 		this();
@@ -36,6 +42,12 @@ public abstract class Operation implements IOperation
 	{
 		this(montant);
 		this.setLibelle(libelle);
+	}
+
+	Operation(String libelle, double montant, int typeOperation)
+	{
+		this(libelle, montant);
+		this.typeOperation = typeOperation;
 	}
 
 	/******************************************************************************************************************
@@ -56,7 +68,11 @@ public abstract class Operation implements IOperation
 	public int getTypeOperation()
 	{
 		return typeOperation;
+	}
 
+	private void setTypeOperation(int typeOperation)
+	{
+		this.typeOperation = typeOperation;
 	}
 
 	/*
@@ -80,7 +96,6 @@ public abstract class Operation implements IOperation
 	public void setCredit(int credit)
 	{
 		this.credit = credit;
-		System.out.println("setcred " + this.credit);
 	}
 
 	public int getDebit()
@@ -92,7 +107,6 @@ public abstract class Operation implements IOperation
 	public void setDebit(int debit)
 	{
 		this.debit = debit;
-		System.out.println("setdeb " + this.debit);
 	}
 
 	/*
