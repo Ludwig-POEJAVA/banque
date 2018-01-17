@@ -6,6 +6,7 @@ import fr.formation.banque.Enregistrement;
 import fr.formation.banque.IOperation;
 import fr.formation.banque.Operation;
 import fr.formation.banque.Prelevement;
+import fr.formation.banque.TypeOperation;
 import fr.formation.banque.Virement;
 
 public class myclass
@@ -34,6 +35,8 @@ public class myclass
 			System.out.println("");
 			op = null;
 		}
+		System.out.println(TypeOperation.getValue(TypeOperation.TYPE_CHEQUE));
+		System.out.println(TypeOperation.getValue(5));
 
 		System.gc();
 	}
