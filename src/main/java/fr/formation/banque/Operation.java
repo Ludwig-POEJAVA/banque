@@ -93,18 +93,19 @@ public class Operation
 	{
 		if (montant < 0)
 		{
-			debit = Math.floor(-montant * 100);
+			debit = (int) Math.floor(-montant * 100);
 			credit = 0;
 		}
 		else if (montant > 0)
 		{
 			debit = 0;
-			credit = Math.floor(montant * 100);
+			credit = (int) Math.floor(montant * 100);
 		}
 		else
 		{
 			credit = 0;
 			debit = 0;
+			// je sais ...
 		}
 
 		// this.montant = montant;
