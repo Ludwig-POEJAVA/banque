@@ -24,17 +24,9 @@ public abstract class Operation implements IOperation
 		debit = 0;
 	}
 
-	Operation(int typeOperation)
-	{
-		this();
-		this.typeOperation = typeOperation;
-	}
-
 	Operation(double montant)
 	{
 		this();
-		// setCredit((int) (montant * 100));
-		// setDebit((int) (montant * 100));
 		setMontant(montant);
 	}
 
@@ -47,7 +39,6 @@ public abstract class Operation implements IOperation
 	Operation(String libelle, double montant, int typeOperation)
 	{
 		this(libelle, montant);
-		this.typeOperation = typeOperation;
 	}
 
 	/******************************************************************************************************************
@@ -65,15 +56,19 @@ public abstract class Operation implements IOperation
 	/*
 	 * double calculerMontantTTC(double taux) { return getMontant() * (1 + taux); }
 	 */
-	public int getTypeOperation()
-	{
-		return typeOperation;
-	}
+	/*
+	 * public int getTypeOperation()
+	 * {
+	 * return typeOperation;
+	 * }
+	 */
 
-	private void setTypeOperation(int typeOperation)
-	{
-		this.typeOperation = typeOperation;
-	}
+	/*
+	 * private void setTypeOperation(int typeOperation)
+	 * {
+	 * this.typeOperation = typeOperation;
+	 * }
+	 */
 
 	/*
 	 * (non-Javadoc)
