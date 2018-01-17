@@ -7,14 +7,21 @@ public class Virement extends Operation
 	/******************************************************************************************************************
 	 * CONSTRUCTORS
 	 *****************************************************************************************************************/
+	public Virement()
+	{
+		this.typeOperation = TypeOperation.TYPE_VIREMENT;
+	}
+
 	public Virement(double montant)
 	{
 		super(montant);
+		this.typeOperation = TypeOperation.TYPE_VIREMENT;
 	}
 
 	public Virement(String libelle, double montant)
 	{
 		super(libelle, montant);
+		this.typeOperation = TypeOperation.TYPE_VIREMENT;
 	}
 
 	/******************************************************************************************************************

@@ -11,6 +11,8 @@ public abstract class Operation implements IOperation
 	private int credit = 0; // valeur en unité miniamle de monnaie 1 = 0.01€
 	private int debit = 0;// valeur en unité miniamle de monnaie 1 = 0.01€
 
+	protected int typeOperation = TypeOperation.TYPE_CB;
+
 	public Operation()
 	{
 		setDateOperation(new Date());
@@ -37,18 +39,24 @@ public abstract class Operation implements IOperation
 	}
 
 	/******************************************************************************************************************
-	 * MÉTHODES
-	 *****************************************************************************************************************/
-	/*
-	 * double calculerMontantTTC(double taux) { return getMontant() * (1 + taux); }
-	 */
-
-	/******************************************************************************************************************
 	 * FINALIZER (when GC deletes this object
 	 *****************************************************************************************************************/
 	protected void finalize()
 	{
 		System.out.println("OPERATION > " + getClass().getSimpleName() + " terminated");
+	}
+
+	/******************************************************************************************************************
+	 * MÉTHODES
+	 *****************************************************************************************************************/
+
+	/*
+	 * double calculerMontantTTC(double taux) { return getMontant() * (1 + taux); }
+	 */
+	public int getTypeOperation()
+	{
+		return typeOperation;
+
 	}
 
 	/*

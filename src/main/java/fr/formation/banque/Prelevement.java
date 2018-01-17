@@ -7,14 +7,21 @@ public class Prelevement extends Operation
 	/******************************************************************************************************************
 	 * CONSTRUCTORS
 	 *****************************************************************************************************************/
+	public Prelevement()
+	{
+		this.typeOperation = TypeOperation.TYPE_PRELEVEMENT;
+	}
+
 	public Prelevement(double montant)
 	{
 		super(montant);
+		this.typeOperation = TypeOperation.TYPE_PRELEVEMENT;
 	}
 
 	public Prelevement(String libelle, double montant)
 	{
 		super(libelle, montant);
+		this.typeOperation = TypeOperation.TYPE_PRELEVEMENT;
 	}
 
 	/******************************************************************************************************************

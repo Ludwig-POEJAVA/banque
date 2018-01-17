@@ -7,14 +7,21 @@ public class Enregistrement extends Operation
 	/******************************************************************************************************************
 	 * CONSTRUCTORS
 	 *****************************************************************************************************************/
+	public Enregistrement()
+	{
+		this.typeOperation = TypeOperation.TYPE_CHEQUE;
+	}
+
 	public Enregistrement(double montant)
 	{
 		super(montant);
+		this.typeOperation = TypeOperation.TYPE_CHEQUE;
 	}
 
 	public Enregistrement(String libelle, double montant)
 	{
 		super(libelle, montant);
+		this.typeOperation = TypeOperation.TYPE_CHEQUE;
 	}
 
 	/******************************************************************************************************************
