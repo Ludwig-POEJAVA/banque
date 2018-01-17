@@ -7,7 +7,7 @@ public class Operation
 	private Date dateOperation = new Date();
 	private Date dateValeur = null;
 	private String libelle = "test";
-	private double montant = 0; // montant, en unité de monnaie 1 = 1 €
+	// private double montant = 0; // montant, en unité de monnaie 1 = 1 €
 	private double credit = 0; // valeur en unité miniamle de monnaie 1 = 0.01€
 	private double debit = 0;// valeur en unité miniamle de monnaie 1 = 0.01€
 
@@ -15,7 +15,8 @@ public class Operation
 	{
 		setDateOperation(new Date());
 		setDateValeur(null);
-		montant = 0;
+		credit = 0;
+		debit = 0;
 	}
 
 	/******************************************************************************************************************
@@ -25,7 +26,8 @@ public class Operation
 	public Operation(double montant)
 	{
 		this();
-		this.montant = montant;
+		setCredit(montant);
+		setDebit(montant);
 	}
 
 	public Operation(String libelle, double montant)
@@ -36,7 +38,7 @@ public class Operation
 
 	double calculerMontantTTC(double taux)
 	{
-		return montant * (1 + taux);
+		return getMontant() * (1 + taux);
 	}
 
 	/******************************************************************************************************************
@@ -105,13 +107,14 @@ public class Operation
 			debit = 0;
 		}
 
-		this.montant = montant;
+		// this.montant = montant;
 
 	}
 
 	public double getCredit()
 	{
-		return montant > 0 ? (-montant * 100) : 0;
+		// return montant > 0 ? (-montant * 100) : 0;
+		return credit;
 	}
 
 	public void setCredit(double credit)
@@ -121,7 +124,8 @@ public class Operation
 
 	public double getDebit()
 	{
-		return montant < 0 ? (-montant * 100) : 0;
+		// return montant < 0 ? (-montant * 100) : 0;
+		return debit;
 	}
 
 	public void setDebit(double debit)
