@@ -2,7 +2,7 @@ package fr.formation.banque;
 
 import java.util.Date;
 
-public class Operation
+public abstract class Operation
 {
 	private Date dateOperation = new Date();
 	private Date dateValeur = null;
@@ -55,33 +55,17 @@ public class Operation
 	/******************************************************************************************************************
 	 * GETTERS SETTERS
 	 *****************************************************************************************************************/
-	public double getMontant()
-	{
-		return (credit - debit) / 100;
-	}
+	public abstract double getMontant()
+	/*
+	 * { return (credit - debit) / 100; }
+	 */;
 
-	public void setMontant(double montant)
-	{
-		if (montant < 0)
-		{
-			debit = (int) Math.floor(-montant * 100);
-			credit = 0;
-		}
-		else if (montant > 0)
-		{
-			debit = 0;
-			credit = (int) Math.floor(montant * 100);
-		}
-		else
-		{
-			credit = 0;
-			debit = 0;
-			// je sais ...
-		}
-
-		// this.montant = montant;
-
-	}
+	public abstract void setMontant(double montant)
+	/*
+	 * { if (montant < 0) { debit = (int) Math.floor(-montant * 100); credit = 0; }
+	 * else if (montant > 0) { debit = 0; credit = (int) Math.floor(montant * 100);
+	 * } else { credit = 0; debit = 0; // je sais ... } // this.montant = montant; }
+	 */;
 
 	private int getCredit()
 	{
