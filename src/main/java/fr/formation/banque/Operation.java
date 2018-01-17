@@ -8,8 +8,8 @@ public class Operation
 	private Date dateValeur = null;
 	private String libelle = "test";
 	// private double montant = 0; // montant, en unité de monnaie 1 = 1 €
-	private double credit = 0; // valeur en unité miniamle de monnaie 1 = 0.01€
-	private double debit = 0;// valeur en unité miniamle de monnaie 1 = 0.01€
+	private int credit = 0; // valeur en unité miniamle de monnaie 1 = 0.01€
+	private int debit = 0;// valeur en unité miniamle de monnaie 1 = 0.01€
 
 	public Operation()
 	{
@@ -25,8 +25,9 @@ public class Operation
 	public Operation(double montant)
 	{
 		this();
-		setCredit(montant);
-		setDebit(montant);
+		// setCredit((int) (montant * 100));
+		// setDebit((int) (montant * 100));
+		setMontant(montant);
 	}
 
 	public Operation(String libelle, double montant)
@@ -53,6 +54,55 @@ public class Operation
 
 	/******************************************************************************************************************
 	 * GETTERS SETTERS
+	 *****************************************************************************************************************/
+	public void setMontant(double montant)
+	{
+		if (montant < 0)
+		{
+			debit = (int) Math.floor(-montant * 100);
+			credit = 0;
+		}
+		else if (montant > 0)
+		{
+			debit = 0;
+			credit = (int) Math.floor(montant * 100);
+		}
+		else
+		{
+			credit = 0;
+			debit = 0;
+			// je sais ...
+		}
+
+		// this.montant = montant;
+
+	}
+
+	public int getCredit()
+	{
+		// return montant > 0 ? (-montant * 100) : 0;
+		return credit;
+	}
+
+	public void setCredit(int credit)
+	{
+		this.credit = credit;
+		System.out.println("setcred" + credit + "  " + this.credit);
+	}
+
+	public int getDebit()
+	{
+		// return montant < 0 ? (-montant * 100) : 0;
+		return debit;
+	}
+
+	public void setDebit(int debit)
+	{
+		this.debit = debit;
+	}
+
+	/******************************************************************************************************************
+	 * GETTERS SETTERS std
 	 *****************************************************************************************************************/
 	public Date getDateOperation()
 	{
@@ -87,50 +137,5 @@ public class Operation
 	public double getMontant()
 	{
 		return (credit - debit) / 100;
-	}
-
-	public void setMontant(double montant)
-	{
-		if (montant < 0)
-		{
-			debit = (int) Math.floor(-montant * 100);
-			credit = 0;
-		}
-		else if (montant > 0)
-		{
-			debit = 0;
-			credit = (int) Math.floor(montant * 100);
-		}
-		else
-		{
-			credit = 0;
-			debit = 0;
-			// je sais ...
-		}
-
-		// this.montant = montant;
-
-	}
-
-	public double getCredit()
-	{
-		// return montant > 0 ? (-montant * 100) : 0;
-		return credit;
-	}
-
-	public void setCredit(double credit)
-	{
-		this.credit = credit;
-	}
-
-	public double getDebit()
-	{
-		// return montant < 0 ? (-montant * 100) : 0;
-		return debit;
-	}
-
-	public void setDebit(double debit)
-	{
-		this.debit = debit;
 	}
 }
