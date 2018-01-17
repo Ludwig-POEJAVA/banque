@@ -4,17 +4,48 @@ public class Enregistrement extends Operation
 {
 	public String modePaiement;
 
-	@Override
-	public double getMontant()
+	/******************************************************************************************************************
+	 * CONSTRUCTORS
+	 *****************************************************************************************************************/
+	public Enregistrement(double montant)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		super(montant);
 	}
 
-	@Override
+	public Enregistrement(String libelle, double montant)
+	{
+		super(libelle, montant);
+	}
+
+	/******************************************************************************************************************
+	 * GETTERS SETTERS
+	 *****************************************************************************************************************/
+	public double getMontant()
+	{
+		{
+			return (getCredit() - getDebit()) / 100.;
+		}
+	}
+
 	public void setMontant(double montant)
 	{
-		// TODO Auto-generated method stub
+		{
+			if (montant < 0)
+			{
+				setDebit((int) Math.floor(-montant * 100));
+				setCredit(0);
+			}
+			else if (montant > 0)
+			{
+				setCredit((int) Math.floor(montant * 100));
+				setDebit(0);
+			}
+			else
+			{
+				setCredit(0);
+				setDebit(0);
+			}
+		}
 
 	}
 }

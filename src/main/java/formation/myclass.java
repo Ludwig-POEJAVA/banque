@@ -1,33 +1,40 @@
 package formation;
 
+import java.util.ArrayList;
+
+import fr.formation.banque.Enregistrement;
 import fr.formation.banque.Operation;
+import fr.formation.banque.Prelevement;
+import fr.formation.banque.Virement;
 
 public class myclass
 {
 	public static void main(String... args)
 	{
 		System.out.println("Gestion de compte");
-		Operation op1 = new Operation("lires", 200000);
-		System.out.println("Objet.libelle : " + op1.getLibelle());
-		System.out.println("Objet.montant : " + op1.getMontant());
-		// System.out.println("Objet.credit : " + op1.getCredit());
-		// System.out.println("Objet.debit : " + op1.getDebit());
-		System.out.println("objet en string = " + op1.toString());
 
-		System.out.println("");
+		ArrayList<Operation> operations = new ArrayList<Operation>();
 
-		Operation op2 = new Operation("lires", -123456);
-		System.out.println("Objet.libelle : " + op2.getLibelle());
-		System.out.println("Objet.montant : " + op2.getMontant());
-		// System.out.println("Objet.credit : " + op2.getCredit());
-		// System.out.println("Objet.debit : " + op2.getDebit());
-		System.out.println("objet en string = " + op2.toString());
+		operations.add(new Enregistrement("enreg", 12.34));
+		operations.add(new Enregistrement("enreg", -56.78));
+		operations.add(new Virement("vire", 111.11));
+		operations.add(new Virement("vire", -222.22));
+		operations.add(new Prelevement("preleve", 333.33));
+		operations.add(new Prelevement("preleve", -444.44));
 
 		System.out.println("");
 		System.out.println("");
 
-		op1 = null;
-		op2 = null;
+		for (Operation op : operations)
+		{
+			System.out.println("Objet.libelle : " + op.getLibelle());
+			System.out.println("Objet.getMontant : " + op.getMontant());
+			System.out.println("objet.toString = " + op.toString());
+			System.out.println("");
+			System.out.println("");
+			op = null;
+		}
+
 		System.gc();
 	}
 }

@@ -4,17 +4,29 @@ public class Prelevement extends Operation
 {
 	public String destinataire;
 
-	@Override
-	public double getMontant()
+	/******************************************************************************************************************
+	 * CONSTRUCTORS
+	 *****************************************************************************************************************/
+	public Prelevement(double montant)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		super(montant);
 	}
 
-	@Override
+	public Prelevement(String libelle, double montant)
+	{
+		super(libelle, montant);
+	}
+
+	/******************************************************************************************************************
+	 * GETTERS SETTERS
+	 *****************************************************************************************************************/
+	public double getMontant()
+	{
+		return getDebit() / 100.0;
+	}
+
 	public void setMontant(double montant)
 	{
-		// TODO Auto-generated method stub
-
+		setDebit((int) (-montant * 100));
 	}
 }

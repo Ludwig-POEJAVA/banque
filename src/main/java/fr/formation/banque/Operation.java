@@ -22,7 +22,7 @@ public abstract class Operation
 	/******************************************************************************************************************
 	 * CONSTRUCTORS
 	 *****************************************************************************************************************/
-	public Operation(double montant)
+	Operation(double montant)
 	{
 		this();
 		// setCredit((int) (montant * 100));
@@ -30,7 +30,7 @@ public abstract class Operation
 		setMontant(montant);
 	}
 
-	public Operation(String libelle, double montant)
+	Operation(String libelle, double montant)
 	{
 		this(montant);
 		this.setLibelle(libelle);
@@ -49,7 +49,7 @@ public abstract class Operation
 	 *****************************************************************************************************************/
 	protected void finalize()
 	{
-		System.out.println("OPERATION terminated");
+		System.out.println("OPERATION > " + getClass().getSimpleName() + " terminated");
 	}
 
 	/******************************************************************************************************************
@@ -67,27 +67,28 @@ public abstract class Operation
 	 * } else { credit = 0; debit = 0; // je sais ... } // this.montant = montant; }
 	 */;
 
-	private int getCredit()
+	protected int getCredit()
 	{
 		// return montant > 0 ? (-montant * 100) : 0;
 		return credit;
 	}
 
-	private void setCredit(int credit)
+	protected void setCredit(int credit)
 	{
 		this.credit = credit;
-		System.out.println("setcred" + credit + "  " + this.credit);
+		System.out.println("setcred " + this.credit);
 	}
 
-	private int getDebit()
+	protected int getDebit()
 	{
 		// return montant < 0 ? (-montant * 100) : 0;
 		return debit;
 	}
 
-	private void setDebit(int debit)
+	protected void setDebit(int debit)
 	{
 		this.debit = debit;
+		System.out.println("setdeb " + this.debit);
 	}
 
 	/******************************************************************************************************************

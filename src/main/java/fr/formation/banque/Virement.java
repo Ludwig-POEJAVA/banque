@@ -4,17 +4,29 @@ public class Virement extends Operation
 {
 	public String compteVirement;
 
-	@Override
-	public double getMontant()
+	/******************************************************************************************************************
+	 * CONSTRUCTORS
+	 *****************************************************************************************************************/
+	public Virement(double montant)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		super(montant);
 	}
 
-	@Override
+	public Virement(String libelle, double montant)
+	{
+		super(libelle, montant);
+	}
+
+	/******************************************************************************************************************
+	 * GETTERS SETTERS
+	 *****************************************************************************************************************/
+	public double getMontant()
+	{
+		return getDebit() / 100.0;
+	}
+
 	public void setMontant(double montant)
 	{
-		// TODO Auto-generated method stub
-
+		setDebit((int) (-montant * 100));
 	}
 }
