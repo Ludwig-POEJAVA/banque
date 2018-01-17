@@ -2,7 +2,7 @@ package fr.formation.banque;
 
 import java.util.Date;
 
-public abstract class Operation
+public abstract class Operation implements IOperation
 {
 	private Date dateOperation = new Date();
 	private Date dateValeur = null;
@@ -39,10 +39,9 @@ public abstract class Operation
 	/******************************************************************************************************************
 	 * MÉTHODES
 	 *****************************************************************************************************************/
-	double calculerMontantTTC(double taux)
-	{
-		return getMontant() * (1 + taux);
-	}
+	/*
+	 * double calculerMontantTTC(double taux) { return getMontant() * (1 + taux); }
+	 */
 
 	/******************************************************************************************************************
 	 * FINALIZER (when GC deletes this object
@@ -52,73 +51,91 @@ public abstract class Operation
 		System.out.println("OPERATION > " + getClass().getSimpleName() + " terminated");
 	}
 
-	/******************************************************************************************************************
-	 * GETTERS SETTERS
-	 *****************************************************************************************************************/
-	public abstract double getMontant()
 	/*
-	 * { return (credit - debit) / 100; }
-	 */;
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#getMontant()
+	 */
+	public abstract double getMontant();
 
-	public abstract void setMontant(double montant)
 	/*
-	 * { if (montant < 0) { debit = (int) Math.floor(-montant * 100); credit = 0; }
-	 * else if (montant > 0) { debit = 0; credit = (int) Math.floor(montant * 100);
-	 * } else { credit = 0; debit = 0; // je sais ... } // this.montant = montant; }
-	 */;
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#setMontant(double)
+	 */
+	public abstract void setMontant(double montant);
 
-	protected int getCredit()
+	public int getCredit()
 	{
 		// return montant > 0 ? (-montant * 100) : 0;
 		return credit;
 	}
 
-	protected void setCredit(int credit)
+	public void setCredit(int credit)
 	{
 		this.credit = credit;
 		System.out.println("setcred " + this.credit);
 	}
 
-	protected int getDebit()
+	public int getDebit()
 	{
 		// return montant < 0 ? (-montant * 100) : 0;
 		return debit;
 	}
 
-	protected void setDebit(int debit)
+	public void setDebit(int debit)
 	{
 		this.debit = debit;
 		System.out.println("setdeb " + this.debit);
 	}
 
-	/******************************************************************************************************************
-	 * GETTERS SETTERS std
-	 *****************************************************************************************************************/
+	/*
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#getDateOperation()
+	 */
 	public Date getDateOperation()
 	{
 		return dateOperation;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#setDateOperation(java.util.Date)
+	 */
 	public void setDateOperation(Date dateOperation)
 	{
 		this.dateOperation = dateOperation;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#getDateValeur()
+	 */
 	public Date getDateValeur()
 	{
 		return dateValeur;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#setDateValeur(java.util.Date)
+	 */
 	public void setDateValeur(Date dateValeur)
 	{
 		this.dateValeur = dateValeur;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#getLibelle()
+	 */
 	public String getLibelle()
 	{
 		return libelle;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see fr.formation.banque.IOperation#setLibelle(java.lang.String)
+	 */
 	public void setLibelle(String libelle)
 	{
 		this.libelle = libelle;
