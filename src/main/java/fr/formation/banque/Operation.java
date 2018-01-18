@@ -13,6 +13,20 @@ public abstract class Operation implements IOperation
 
 	// private int typeOperation = TypeOperation.TYPE_CB;
 
+	class Ligne
+	{
+		public double montant;
+		public String libelle;
+
+		public String toString()
+		{
+			return "[libelle : " + this.libelle + "]" + "[montant : " + this.montant + "]";
+		}
+	}
+
+	private Ligne ligneHT = new Ligne();
+	private Ligne ligneTVA = new Ligne();
+
 	/******************************************************************************************************************
 	 * CONSTRUCTORS
 	 *****************************************************************************************************************/
@@ -158,5 +172,53 @@ public abstract class Operation implements IOperation
 	public void setLibelle(String libelle)
 	{
 		this.libelle = libelle;
+	}
+
+	protected void setLigneHT(String libelle, double montantHT)
+	{
+		ligneHT.libelle = libelle;
+		ligneHT.montant = montantHT;
+	}
+
+	protected void setLigneTVA(String libelle, double montantTVA)
+	{
+		ligneTVA.libelle = libelle;
+		ligneTVA.montant = montantTVA;
+	}
+
+	public void setLigne(String libelle, double montant, double taux)
+	{
+		setLibelle(libelle);
+		setMontant(montant);
+
+		setLigneHT("HT", montant * (1. - taux));
+		setLigneTVA("TVA", montant * taux);
+	}
+
+	public static int convertSomme(double valeur)
+	{
+		return (int) Math.floor(valeur * 100);
+	}
+
+	public static double convertSomme(int valeur)
+	{
+		return (double) valeur / 100;
+	}
+
+	public static void printOperation(Operation operation)
+	{
+
+		System.out.println("Operation <" + operation.getTypeOperation().toString() + ">");
+		System.out.println(" \tLibelle: '" + operation.getLibelle() + "'");
+		System.out.println(" \tCredit: " + operation.getCredit());
+		System.out.println(" \tDébit: '" + operation.getDebit());
+		System.out.println(" \tMontant: '" + operation.getMontant());
+	}
+
+	public String toString()
+	{
+		return "Operation" + getTypeOperation().toString() + " - '" + getLibelle() + "'" + " \tMontant : "
+				+ getMontant() + " \tDebit : " + getDebit() + " \tCredit : " + getCredit() + " \tligneHT : "
+				+ ligneHT.toString() + " \tligneTVA : " + ligneTVA.toString();
 	}
 }
