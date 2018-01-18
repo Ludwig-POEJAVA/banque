@@ -15,13 +15,16 @@ public class myclass
 		System.out.println("Gestion de compte");
 
 		ArrayList<Operation> operations = new ArrayList<Operation>();
+		// ArrayList<Depot> depots = new ArrayList<Depot>();
+		// ArrayList<Virement> virements = new ArrayList<Virement>();
+		// ArrayList<Prelevement> prelevements = new ArrayList<Prelevement>();
 
-		operations.add(new Depot("libelle enregistrement -", 12.34));
-		operations.add(new Depot("libelle enregistrement -", -56.78));
-		operations.add(new Virement("libelle virement +", 111.11));
-		operations.add(new Virement("libelle virement -", -222.22));
-		operations.add(new Prelevement("libelle prelevement+", 333.33));
-		operations.add(new Prelevement("libelle prelevement -", -444.44));
+		operations.add((Operation) new Depot("libelle enregistrement -", 12.34, TypeOperation.TYPE_CHEQUE));
+		operations.add((Operation) new Depot("libelle enregistrement -", -56.78, TypeOperation.TYPE_ESPECE));
+		operations.add((Operation) new Virement("libelle virement +", 111.11));
+		operations.add((Operation) new Virement("libelle virement -", -222.22));
+		operations.add((Operation) new Prelevement("libelle prelevement+", 333.33));
+		operations.add((Operation) new Prelevement("libelle prelevement -", -444.44));
 
 		System.out.println("");
 

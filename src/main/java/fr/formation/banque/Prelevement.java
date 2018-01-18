@@ -12,6 +12,11 @@ public class Prelevement extends Operation
 		super();
 	}
 
+	public Prelevement(String libelle, double montant)
+	{
+		super(libelle, montant);
+	}
+
 	/******************************************************************************************************************
 	 * GETTERS SETTERS
 	 *****************************************************************************************************************/
