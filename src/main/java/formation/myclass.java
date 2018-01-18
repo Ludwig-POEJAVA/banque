@@ -25,7 +25,6 @@ public class myclass
 		operations.add((Operation) new Virement("libelle virement -", -222.22));
 		operations.add((Operation) new Prelevement("libelle prelevement+", 333.33));
 		operations.add((Operation) new Prelevement("libelle prelevement -", -444.44));
-
 		System.out.println("");
 
 		for (Operation op : operations)
@@ -40,6 +39,10 @@ public class myclass
 
 			System.out.println(TypeOperation.CB.toString());
 			System.out.println(TypeOperation.ESPECE.toString());
+
+			// creation d'un java.lang.NullPointerException
+			// System.out.println(TypeOperation.getValue(null).toString());
+
 		}
 		System.gc();
 	}
