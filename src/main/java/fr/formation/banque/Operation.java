@@ -21,7 +21,7 @@ public abstract class Operation implements IOperation
 		setDateOperation(new Date());
 		setDateValeur(null);
 		credit = 0;
-		debit = 0 + 0;
+		debit = 0;
 	}
 
 	Operation(double montant)

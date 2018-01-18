@@ -17,7 +17,7 @@ public class Prelevement extends Operation
 	 *****************************************************************************************************************/
 	public double getMontant()
 	{
-		return getDebit() / 100.0 + 0;
+		return getDebit() / 100.0;
 	}
 
 	public void setMontant(double montant)
