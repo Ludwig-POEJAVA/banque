@@ -3,6 +3,7 @@ package formation;
 import java.util.ArrayList;
 
 import fr.formation.banque.Depot;
+import fr.formation.banque.ExceptionValeurIndefinie;
 import fr.formation.banque.Operation;
 import fr.formation.banque.Prelevement;
 import fr.formation.banque.TypeOperation;
@@ -36,14 +37,49 @@ public class myclass
 			System.out.println("objet.toString => " + op.toString());
 			System.out.println("");
 			op = null;
+		}
+		System.out.println(TypeOperation.CB.toString());
+		System.out.println(TypeOperation.ESPECE.toString());
 
-			System.out.println(TypeOperation.CB.toString());
-			System.out.println(TypeOperation.ESPECE.toString());
+		// creation d'un java.lang.NullPointerException
+		System.out.println("\n\n*************************************************************************************\nGESTION D'ERREURS");
+		System.out.println("*************************************************************************************\n");
 
-			// creation d'un java.lang.NullPointerException
+		// creation d'un java.lang.ArithmeticException
+		try
+		{
+			// chaque ligne lève une Exception, commentez celle en amont de l'Exception à
+			// tester
 			// System.out.println(TypeOperation.getValue(null).toString());
+			// int j = 1500 / (1 - 1);
+			System.out.println(TypeOperation.getValue("t").toString());
+		}
+		catch (NullPointerException e)
+		{
+			System.out.println("ERREUR un objet est null");
+			System.out.println(e);
+			// throw e;
 
 		}
+		catch (ArithmeticException e)
+		{
+			System.out.println("ERREUR division par 0");
+			System.out.println(e);
+		}
+		catch (ExceptionValeurIndefinie e)
+		{
+
+			System.out.println("ERREUR spécifique de la classe TypeOperation sur la methode getValue()");
+			System.out.println(e);
+			// throw e;
+		}
+		catch (Exception e)
+		{
+			System.out.println("ERREUR sans plus de commentaires");
+			// System.out.println(e.getStackTrace());
+			// e.printStackTrace();
+		}
+
 		System.gc();
 	}
 }
