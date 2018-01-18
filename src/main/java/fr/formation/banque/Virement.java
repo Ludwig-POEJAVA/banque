@@ -32,6 +32,6 @@ public class Virement extends Operation
 
 	public int getTypeOperation()
 	{
-		return TypeOperation.TYPE_VIREMENT;
+		return TypeOperation_pre_jdk5.TYPE_VIREMENT;
 	}
 }

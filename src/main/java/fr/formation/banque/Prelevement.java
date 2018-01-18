@@ -32,6 +32,6 @@ public class Prelevement extends Operation
 
 	public int getTypeOperation()
 	{
-		return TypeOperation.TYPE_PRELEVEMENT;
+		return TypeOperation_pre_jdk5.TYPE_PRELEVEMENT;
 	}
 }
