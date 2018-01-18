@@ -221,4 +221,10 @@ public abstract class Operation implements IOperation
 				+ getMontant() + " \tDebit : " + getDebit() + " \tCredit : " + getCredit() + " \tligneHT : "
 				+ ligneHT.toString() + " \tligneTVA : " + ligneTVA.toString();
 	}
+
+	@Override
+	public double CalculeTaux(double taux, ICalculeTaux calculTaux)
+	{
+		return calculTaux.calcule(this, taux);
+	}
 }

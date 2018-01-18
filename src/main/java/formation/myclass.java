@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fr.formation.banque.Depot;
 import fr.formation.banque.ExceptionValeurIndefinie;
+import fr.formation.banque.ICalculeTaux;
 import fr.formation.banque.IOperation;
 import fr.formation.banque.Operation;
 import fr.formation.banque.Prelevement;
@@ -28,7 +29,7 @@ public class myclass
 		operations.add((Operation) new Prelevement("libelle prelevement+", 333.33));
 		operations.add((Operation) new Prelevement("libelle prelevement -", -444.44));
 
-		IOperation operationAnonyme = new Operation()
+		Operation operationAnonyme = new Operation()
 		{
 			private double montant;
 			private String libelle;
@@ -67,6 +68,18 @@ public class myclass
 			}
 
 		};
+		operationAnonyme.setLigne("anonymous", 1000, 0.2);
+		System.out.println(operationAnonyme.toString());
+
+		ICalculeTaux monTaux = new ICalculeTaux()
+		{
+			public double calcule(IOperation operation, double taux)
+			{
+				return operation.getMontant() * taux;
+			}
+		};
+		System.out.println("Montant du taux à 20 % :" + monTaux.calcule(operationAnonyme, 0.2) + "\n");
+		System.out.println("Montant du taux à 20 % :" + operationAnonyme.CalculeTaux(0.2, monTaux) + "\n");
 		System.out.println("");
 
 		for (Operation op : operations)
@@ -131,7 +144,7 @@ public class myclass
 		}
 
 		// creation d'un java.lang.NullPointerException
-		System.out.println("\n\n*************************************************************************************\nGESTION D'ERREURS");
+		System.out.println("\n\n*************************************************************************************\nFIN GESTION D'ERREURS");
 		System.out.println("*************************************************************************************\n");
 
 		System.gc();
