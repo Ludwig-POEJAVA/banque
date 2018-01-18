@@ -30,6 +30,41 @@ public class myclass
 
 		IOperation operationAnonyme = new Operation()
 		{
+			private double montant;
+			private String libelle;
+			private double taux;
+
+			@Override
+			public TypeOperation getTypeOperation()
+			{
+				return TypeOperation.CHEQUE;
+			}
+
+			@Override
+			public double getMontant()
+			{
+				return montant;
+			}
+
+			@Override
+			public void setMontant(double montant)
+			{
+				this.montant = montant;
+			}
+
+			@Override
+			public void setLigne(String libelle, double montant, double taux)
+			{
+				this.libelle = libelle;
+				this.montant = montant;
+				this.taux = taux;
+			}
+
+			@Override
+			public String toString()
+			{
+				return "libelle <" + libelle + "> \tmontant : " + montant + " \ttaux  " + taux;
+			}
 
 		};
 		System.out.println("");
