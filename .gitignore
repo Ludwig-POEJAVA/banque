@@ -52,3 +52,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.java
+*.class
+target/classes/formation/myclass.class
+target/classes/formation/myclass.class
+*.class

@@ -54,7 +54,7 @@ public class myclass
 			// int j = 1500 / (1 - 1);
 			System.out.println(TypeOperation.getValue("t").toString());
 		}
-		catch (NullPointerException e)
+		catch (NullPointerException | ExceptionValeurIndefinie e)
 		{
 			System.out.println("ERREUR un objet est null");
 			System.out.println(e);
@@ -66,18 +66,25 @@ public class myclass
 			System.out.println("ERREUR division par 0");
 			System.out.println(e);
 		}
-		catch (ExceptionValeurIndefinie e)
-		{
-
-			System.out.println("ERREUR spécifique de la classe TypeOperation sur la methode getValue()");
-			System.out.println(e);
-			// throw e;
-		}
+		/*
+		 * catch (ExceptionValeurIndefinie e)
+		 * {
+		 * System.out.
+		 * println("ERREUR spécifique de la classe TypeOperation sur la methode getValue()"
+		 * );
+		 * System.out.println(e);
+		 * // throw e;
+		 * }
+		 */
 		catch (Exception e)
 		{
 			System.out.println("ERREUR sans plus de commentaires");
 			// System.out.println(e.getStackTrace());
 			// e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("enfin.....");
 		}
 
 		System.gc();
