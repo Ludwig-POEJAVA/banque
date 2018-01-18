@@ -36,10 +36,12 @@ public abstract class Operation implements IOperation
 		this.setLibelle(libelle);
 	}
 
-	Operation(String libelle, double montant, int typeOperation)
-	{
-		this(libelle, montant);
-	}
+	/*
+	 * Operation(String libelle, double montant, int typeOperation)
+	 * {
+	 * this(libelle, montant);
+	 * }
+	 */
 
 	/******************************************************************************************************************
 	 * FINALIZER (when GC deletes this object
