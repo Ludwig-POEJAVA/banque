@@ -30,8 +30,8 @@ public class Virement extends Operation
 		setDebit((int) (-montant * 100));
 	}
 
-	public int getTypeOperation()
+	public TypeOperation getTypeOperation()
 	{
-		return TypeOperation_pre_jdk5.TYPE_VIREMENT;
+		return TypeOperation.VIREMENT;
 	}
 }

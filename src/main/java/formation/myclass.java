@@ -6,12 +6,11 @@ import fr.formation.banque.Depot;
 import fr.formation.banque.Operation;
 import fr.formation.banque.Prelevement;
 import fr.formation.banque.TypeOperation;
-import fr.formation.banque.TypeOperation_pre_jdk5;
 import fr.formation.banque.Virement;
 
 public class myclass
 {
-	public static void main(String... args)
+	public static void main(String... args) throws Exception
 	{
 		System.out.println("Gestion de compte");
 
@@ -20,8 +19,8 @@ public class myclass
 		// ArrayList<Virement> virements = new ArrayList<Virement>();
 		// ArrayList<Prelevement> prelevements = new ArrayList<Prelevement>();
 
-		operations.add((Operation) new Depot("libelle enregistrement -", 12.34, TypeOperation_pre_jdk5.TYPE_CHEQUE));
-		operations.add((Operation) new Depot("libelle enregistrement -", -56.78, TypeOperation_pre_jdk5.TYPE_ESPECE));
+		operations.add((Operation) new Depot("libelle enregistrement -", 12.34, TypeOperation.CHEQUE));
+		operations.add((Operation) new Depot("libelle enregistrement -", -56.78, TypeOperation.ESPECE));
 		operations.add((Operation) new Virement("libelle virement +", 111.11));
 		operations.add((Operation) new Virement("libelle virement -", -222.22));
 		operations.add((Operation) new Prelevement("libelle prelevement+", 333.33));
@@ -34,7 +33,7 @@ public class myclass
 			System.out.println("Objet.libelle => " + op.getLibelle());
 			System.out.println("Objet.getMontant => " + op.getMontant());
 			System.out.println("Object.TTC => " + op.calculerMontantTTC(0.25));// 25% VAT
-			System.out.println("Object.typeOperation => " + TypeOperation_pre_jdk5.getValue(op.getTypeOperation()) + " [" + op.getTypeOperation() + "]");
+			System.out.println("Object.typeOperation => " + TypeOperation.getValue(op.getTypeOperation().toString()) + " [" + op.getTypeOperation() + " " + op.getTypeOperation() + "]");
 			System.out.println("objet.toString => " + op.toString());
 			System.out.println("");
 			op = null;
