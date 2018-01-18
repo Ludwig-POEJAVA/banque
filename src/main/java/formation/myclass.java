@@ -78,8 +78,10 @@ public class myclass
 				return operation.getMontant() * taux;
 			}
 		};
-		System.out.println("Montant du taux à 20 % :" + monTaux.calcule(operationAnonyme, 0.2) + "\n");
-		System.out.println("Montant du taux à 20 % :" + operationAnonyme.CalculeTaux(0.2, monTaux) + "\n");
+		System.out.println("Montant du taux à 20 % :" + monTaux.calcule(operationAnonyme, 0.2));
+		System.out.println("Montant du taux à 20 % :" + operationAnonyme.calculeTaux(0.2, monTaux));
+		System.out.println("Montant du taux à 20 % :"
+				+ operationAnonyme.calculeTaux(0.2, (op, t) -> op.getMontant() * t));
 		System.out.println("");
 
 		for (Operation op : operations)

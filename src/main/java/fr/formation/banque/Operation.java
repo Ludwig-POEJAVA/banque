@@ -223,7 +223,7 @@ public abstract class Operation implements IOperation
 	}
 
 	@Override
-	public double CalculeTaux(double taux, ICalculeTaux calculTaux)
+	public double calculeTaux(double taux, ICalculeTaux calculTaux)
 	{
 		return calculTaux.calcule(this, taux);
 	}
