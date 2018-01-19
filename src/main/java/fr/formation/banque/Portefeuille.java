@@ -12,7 +12,8 @@ public class Portefeuille
 	{
 		this.libelle = libelle;
 		this.nomBanque = nomBanque;
-		System.out.println("i am a " + getClass().getSimpleName() + " with : <libelle = " + this.libelle + "> & <nomBanque = " + this.nomBanque + ">");
+		System.out.println("<" + getClass().getSimpleName() + "> {libelle : '" + this.libelle + "', nomBanque : '"
+				+ this.nomBanque + "';}");
 	}
 
 	public String getLibelle()

@@ -3,19 +3,26 @@ package TP;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import fr.formation.banque.Compte;
 import fr.formation.banque.Depot;
 import fr.formation.banque.ExceptionValeurIndefinie;
 import fr.formation.banque.ICalculeTaux;
 import fr.formation.banque.IOperation;
 import fr.formation.banque.Operation;
+import fr.formation.banque.Portefeuille;
 import fr.formation.banque.Prelevement;
 import fr.formation.banque.TypeOperation;
 import fr.formation.banque.Virement;
 
 public class Exercice
 {
+	static ArrayList<Portefeuille> portefeuilles = new ArrayList<Portefeuille>();
+	static ArrayList<Compte> comptes = new ArrayList<Compte>();
+	static ArrayList<Operation> operations = new ArrayList<Operation>();
+
 	public static void main(String... args) throws Exception
 	{
+
 		boolean fini = false;
 		Scanner scan = new Scanner(System.in);
 
@@ -92,7 +99,14 @@ public class Exercice
 
 	private static void creerPortefeuille(Scanner scan)
 	{
-		// TODO Auto-generated method stub
+		String libelle;
+		String nomBanque;
+		System.out.println("> LIBELLE DE PORTEFEUILLE ?");
+		libelle = scan.next();
+		System.out.println("> NOM DE BANQUE DE PORTEFEUILLE ?");
+		nomBanque = scan.next();
+
+		portefeuilles.add(new Portefeuille(libelle, nomBanque));
 
 	}
 
