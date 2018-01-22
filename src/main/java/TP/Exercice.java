@@ -107,35 +107,53 @@ public class Exercice
 		Date dateOuverture;
 		Date dateFermeture;
 
+		boolean flag = false;
+		do
+		{
+			System.out.print("> NUMERO DE COMPTE ?");
+			if (flag)
+			{
+				System.out.println("<UNIQUE>");
+			}
+			else
+			{
+				System.out.println();
+			}
+			numero = scan.next();
+			flag = true;
+		}
+		while (comptes.containsKey(numero));
+
 		System.out.println("> LIBELLE DE COMPTE ?");
 		libelle = scan.next();
-
-		// System.out.println("> NOM DE BANQUE DE PORTEFEUILLE ?");
-		// nomBanque = scan.next();
-
-		// while (portefeuilles.containsKey(libelle))
-		{
-			// System.out.println("> LIBELLE DE PORTEFEUILLE ? (UNIQUE. '" + libelle + "'
-			// EXISTE DEJA)");
-			// libelle = scan.next();
-		}
-		// portefeuilles.put(libelle, new Portefeuille(libelle, nomBanque));
+		comptes.put(numero, new Compte(numero, libelle));
 	}
 
 	private static void creerPortefeuille()
 	{
 		String libelle;
 		String nomBanque;
-		System.out.println("> LIBELLE DE PORTEFEUILLE ?");
-		libelle = scan.next();
+
+		boolean flag = false;
+		do
+		{
+			System.out.print("> LIBELLE DE PORTEFEUILLE ?");
+			if (flag)
+			{
+				System.out.println("<UNIQUE>");
+			}
+			else
+			{
+				System.out.println();
+			}
+			libelle = scan.next();
+			flag = true;
+		}
+		while (portefeuilles.containsKey(libelle));
+
 		System.out.println("> NOM DE BANQUE DE PORTEFEUILLE ?");
 		nomBanque = scan.next();
 
-		while (portefeuilles.containsKey(libelle))
-		{
-			System.out.println("> LIBELLE DE PORTEFEUILLE ? (UNIQUE. '" + libelle + "' EXISTE DEJA)");
-			libelle = scan.next();
-		}
 		portefeuilles.put(libelle, new Portefeuille(libelle, nomBanque));
 	}
 
@@ -146,5 +164,6 @@ public class Exercice
 		System.out.println(" 2 - Créer des choses");
 		System.out.println(" 3 - Sauvegarder");
 		System.out.println(" 4 - Quitter");
+
 	}
 }

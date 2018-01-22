@@ -11,12 +11,10 @@ public class Compte
 	private Date dateFermeture;
 	ArrayList<Operation> operations = new ArrayList<Operation>();
 
-	public void compte(String numero, String libelle, Date dateOuverture, Date dateFermeture)
+	public Compte(String numero, String libelle)
 	{
 		this.numero = numero;
 		this.libelle = libelle;
-		this.dateOuverture = dateOuverture;
-		this.dateFermeture = dateFermeture;
 	}
 
 	public String getNumero()
