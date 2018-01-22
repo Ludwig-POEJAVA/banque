@@ -2,7 +2,7 @@ package formation;
 
 import java.util.ArrayList;
 
-import fr.formation.banque.Depot;
+import fr.formation.banque.Enregistrement;
 import fr.formation.banque.ExceptionValeurIndefinie;
 import fr.formation.banque.ICalculeTaux;
 import fr.formation.banque.IOperation;
@@ -22,8 +22,8 @@ public class myclass
 		// ArrayList<Virement> virements = new ArrayList<Virement>();
 		// ArrayList<Prelevement> prelevements = new ArrayList<Prelevement>();
 
-		operations.add((Operation) new Depot("depot cheque 100 balles", 100.01, TypeOperation.CHEQUE));
-		operations.add((Operation) new Depot("paiement kebab 200 boules", -200.02, TypeOperation.ESPECE));
+		operations.add((Operation) new Enregistrement("depot cheque 100 balles", 100.01, TypeOperation.CHEQUE));
+		operations.add((Operation) new Enregistrement("paiement kebab 200 boules", -200.02, TypeOperation.ESPECE));
 		operations.add((Operation) new Virement("libelle virement +", 123.45));
 		operations.add((Operation) new Virement("libelle virement -", -222.22));
 		operations.add((Operation) new Prelevement("libelle prelevement+", 333.33));

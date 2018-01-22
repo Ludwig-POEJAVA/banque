@@ -1,6 +1,6 @@
 package fr.formation.banque;
 
-public class Depot extends Operation
+public class Enregistrement extends Operation
 {
 	public String modePaiement;
 	private TypeOperation typeOperation = TypeOperation.CB;
@@ -8,7 +8,7 @@ public class Depot extends Operation
 	/******************************************************************************************************************
 	 * CONSTRUCTORS
 	 *****************************************************************************************************************/
-	public Depot(String libelle, double montant, TypeOperation typeOperation)
+	public Enregistrement(String libelle, double montant, TypeOperation typeOperation)
 	{
 		super(libelle, montant);
 		this.typeOperation = typeOperation;

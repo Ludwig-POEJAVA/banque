@@ -1,27 +1,20 @@
 package TP;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.Scanner;
 
-import fr.formation.banque.Compte;
-import fr.formation.banque.Depot;
-import fr.formation.banque.ExceptionValeurIndefinie;
-import fr.formation.banque.ICalculeTaux;
-import fr.formation.banque.IOperation;
-import fr.formation.banque.Operation;
-import fr.formation.banque.Portefeuille;
-import fr.formation.banque.Prelevement;
-import fr.formation.banque.TypeOperation;
-import fr.formation.banque.Virement;
+import fr.formation.banque.*;
 
 public class Exercice
 {
-	// static ArrayList<Portefeuille> portefeuilles = new ArrayList<Portefeuille>();
 	static Hashtable<String, Portefeuille> portefeuilles = new Hashtable<String, Portefeuille>();
 	static Hashtable<String, Compte> comptes = new Hashtable<String, Compte>();
-	// static ArrayList<Operation> operations = new ArrayList<Operation>();
+	static ArrayList<Operation> operations = new ArrayList<Operation>();
 	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String... args) throws Exception
@@ -29,10 +22,14 @@ public class Exercice
 
 		boolean fini = false;
 
+		preremplir();
+
 		while (!fini)
 		{
 			fini = menuMain(fini);
 		}
+		System.out.println("FIN");
+		System.out.println(String.join("", Collections.nCopies(80, "=")));
 		scan.close();
 	}
 
@@ -66,6 +63,11 @@ public class Exercice
 		return fini;
 	}
 
+	private static void menuAfficher()
+	{
+		// TODO
+	}
+
 	private static void menuCreer()
 	{
 		int prompt;
@@ -83,7 +85,7 @@ public class Exercice
 			switch (prompt)
 			{
 				case 1:
-					// menuAfficher(scan);
+					creerOperation();
 					break;
 				case 2:
 					creerCompte();
@@ -100,13 +102,30 @@ public class Exercice
 		}
 	}
 
+	private static void creerOperation()
+	{
+		// TODO : uniquement Virement pour le moment
+		creerVirement();
+	}
+
+	private static void creerVirement()
+	{
+		String libelle;
+		double montant;
+
+		System.out.println("> LIBELLE DE L'OPERATION ?");
+		libelle = scan.next();
+		System.out.println("> MONTANT DE L'OPERATION ?");
+		montant = scan.nextDouble();
+
+		Operation operation = new Virement(libelle, montant);
+	}
+
 	private static void creerCompte()
 	{
 		String numero;
 		String libelle;
-		Date dateOuverture;
-		Date dateFermeture;
-
+		String dateOuverture;
 		boolean flag = false;
 		do
 		{
@@ -126,7 +145,36 @@ public class Exercice
 
 		System.out.println("> LIBELLE DE COMPTE ?");
 		libelle = scan.next();
-		comptes.put(numero, new Compte(numero, libelle));
+
+		Compte compte = new Compte(numero, libelle);
+
+		flag = false;
+		do
+		{
+			System.out.print("> DATE D'OUVERTURE DE COMPTE ?");
+			if (flag)
+			{
+				System.out.println("<dd/MM/yyyy>");
+			}
+			else
+			{
+				System.out.println();
+			}
+			dateOuverture = scan.next();
+			flag = true;
+		}
+		while (!isDateFormattedCorrectly(dateOuverture));
+		try
+		{
+			compte.setDateOuverture((Date) (new SimpleDateFormat("dd/MM/yyyy")).parse(dateOuverture));
+		}
+		catch (ParseException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		comptes.put(compte.getNumero(), compte);
 	}
 
 	private static void creerPortefeuille()
@@ -157,13 +205,44 @@ public class Exercice
 		portefeuilles.put(libelle, new Portefeuille(libelle, nomBanque));
 	}
 
-	private static void menuAfficher()
+	private static boolean isDateFormattedCorrectly(String dateSaisie)
 	{
-		System.out.println("AFFICHAGE DES INFOS");
-		System.out.println(" 1 - Afficher portefeuille(s)");
-		System.out.println(" 2 - Créer des choses");
-		System.out.println(" 3 - Sauvegarder");
-		System.out.println(" 4 - Quitter");
+		try
+		{
+			Date dateLue = (new SimpleDateFormat("dd/MM/yyyy")).parse(dateSaisie);
+			System.out.println(dateLue.toString());
+			return true;
+		}
+		catch (ParseException e)
+		{
+			// e.printStackTrace();
+		}
+		return false;
+	}
+
+	private static void preremplir()
+	{
+		String str_p = "Portefeuille par défaut";
+		Portefeuille p = new Portefeuille(str_p, "Banque JAVA");
+		portefeuilles.put(str_p, p);
+
+		String str_c = "Compte par défaut";
+		Compte c = new Compte(str_c, "Livret jAvA");
+		comptes.put(str_c, c);
+
+		Operation o1 = new Virement("virement au pif", 1337.42);
+		Operation o2 = new Prelevement("prelevement au pif", 100.01);
+		Operation o3 = new Enregistrement("resto chèque -89.99", -89.99, TypeOperation.CHEQUE);
+		Operation o4 = new Enregistrement("la paye chèque +2345.67", +2345.67, TypeOperation.CHEQUE);
+		Operation o5 = new Enregistrement("CB quelconque", -20.0, TypeOperation.CB);
+		Operation o6 = new Enregistrement("pourquoi gère-t'on les éspèces ? ce son généralement des rebuts de retraits par CB", 500.0, TypeOperation.ESPECE);
+
+		operations.add(o1);
+		operations.add(o2);
+		operations.add(o3);
+		operations.add(o4);
+		operations.add(o5);
+		operations.add(o6);
 
 	}
 }
