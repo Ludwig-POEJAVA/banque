@@ -1,9 +1,12 @@
 package fr.formation.banque;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Operation implements IOperation
+public abstract class Operation implements IOperation, Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	private Date dateOperation = new Date();
 	private Date dateValeur = null;
 	private String libelle = "test";

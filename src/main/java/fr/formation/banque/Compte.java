@@ -1,10 +1,13 @@
 package fr.formation.banque;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Compte
+public class Compte implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	private String numero;
 	private String libelle;
 	private Date dateOuverture;

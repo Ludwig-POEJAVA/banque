@@ -99,13 +99,10 @@ public class Exercice
 
 	private static void afficherOperation()
 	{
-
 	}
 
 	private static void afficherCompte()
 	{
-		// TODO Auto-generated method stub
-
 	}
 
 	private static void afficherPortefeuille()
