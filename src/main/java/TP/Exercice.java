@@ -13,9 +13,9 @@ import fr.formation.banque.*;
 public class Exercice
 {
 	static Hashtable<String, Portefeuille> portefeuilles = new Hashtable<String, Portefeuille>();
-	static Hashtable<String, Compte> comptes = new Hashtable<String, Compte>();
-	static ArrayList<Operation> operations = new ArrayList<Operation>();
 	static Scanner scan = new Scanner(System.in);
+	static Portefeuille portefeuilleSelectionne;
+	static Compte compteSelectionne;
 
 	public static void main(String... args) throws Exception
 	{
@@ -65,7 +65,53 @@ public class Exercice
 
 	private static void menuAfficher()
 	{
-		// TODO
+		int prompt;
+		boolean fini_afficher = false;
+		while (!fini_afficher)
+		{
+			System.out.println("AFFICHER DES CHOSES");
+			System.out.println(" 1 - Opération");
+			System.out.println(" 2 - Compte");
+			System.out.println(" 3 - Portefeuille");
+			System.out.println(" 4 - Retour");
+
+			prompt = scan.nextInt();
+
+			switch (prompt)
+			{
+				case 1:
+					afficherOperation();
+					break;
+				case 2:
+					afficherCompte();
+					break;
+				case 3:
+					afficherPortefeuille();
+					break;
+				case 4:
+					fini_afficher = true;
+					break;
+				default:
+					break;
+			}
+		}
+	}
+
+	private static void afficherOperation()
+	{
+
+	}
+
+	private static void afficherCompte()
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+	private static void afficherPortefeuille()
+	{
+		System.out.println(portefeuilleSelectionne.toString());
+
 	}
 
 	private static void menuCreer()
@@ -141,7 +187,7 @@ public class Exercice
 			numero = scan.next();
 			flag = true;
 		}
-		while (comptes.containsKey(numero));
+		while (portefeuilleSelectionne.possedeCompte(numero));
 
 		System.out.println("> LIBELLE DE COMPTE ?");
 		libelle = scan.next();
@@ -174,7 +220,7 @@ public class Exercice
 			e.printStackTrace();
 		}
 
-		comptes.put(compte.getNumero(), compte);
+		portefeuilleSelectionne.ajouterCompte(compte);
 	}
 
 	private static void creerPortefeuille()
@@ -225,10 +271,13 @@ public class Exercice
 		String str_p = "Portefeuille par défaut";
 		Portefeuille p = new Portefeuille(str_p, "Banque JAVA");
 		portefeuilles.put(str_p, p);
+		portefeuilleSelectionne = p;
 
 		String str_c = "Compte par défaut";
 		Compte c = new Compte(str_c, "Livret jAvA");
-		comptes.put(str_c, c);
+		portefeuilleSelectionne.ajouterCompte(c);
+
+		compteSelectionne = c;
 
 		Operation o1 = new Virement("virement au pif", 1337.42);
 		Operation o2 = new Prelevement("prelevement au pif", 100.01);
@@ -237,12 +286,12 @@ public class Exercice
 		Operation o5 = new Enregistrement("CB quelconque", -20.0, TypeOperation.CB);
 		Operation o6 = new Enregistrement("pourquoi gère-t'on les éspèces ? ce son généralement des rebuts de retraits par CB", 500.0, TypeOperation.ESPECE);
 
-		operations.add(o1);
-		operations.add(o2);
-		operations.add(o3);
-		operations.add(o4);
-		operations.add(o5);
-		operations.add(o6);
+		compteSelectionne.ajouterOperation(o1);
+		compteSelectionne.ajouterOperation(o2);
+		compteSelectionne.ajouterOperation(o3);
+		compteSelectionne.ajouterOperation(o4);
+		compteSelectionne.ajouterOperation(o5);
+		compteSelectionne.ajouterOperation(o6);
 
 	}
 }

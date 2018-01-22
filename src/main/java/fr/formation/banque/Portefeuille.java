@@ -1,12 +1,12 @@
 package fr.formation.banque;
 
-import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class Portefeuille
 {
 	private String libelle;
 	private String nomBanque;
-	ArrayList<Compte> comptes = new ArrayList<Compte>();
+	private static Hashtable<String, Compte> comptes = new Hashtable<String, Compte>();
 
 	public Portefeuille(String libelle, String nomBanque)
 	{
@@ -36,4 +36,13 @@ public class Portefeuille
 		this.nomBanque = nomBanque;
 	}
 
+	public boolean possedeCompte(String numero)
+	{
+		return comptes.containsKey(numero);
+	}
+
+	public void ajouterCompte(Compte compte)
+	{
+		comptes.put(compte.getNumero(), compte);
+	}
 }

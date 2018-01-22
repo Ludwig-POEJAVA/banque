@@ -9,7 +9,7 @@ public class Compte
 	private String libelle;
 	private Date dateOuverture;
 	private Date dateFermeture;
-	ArrayList<Operation> operations = new ArrayList<Operation>();
+	static ArrayList<Operation> operations = new ArrayList<Operation>();
 
 	public Compte(String numero, String libelle)
 	{
@@ -55,5 +55,11 @@ public class Compte
 	public void setDateFermeture(Date dateFermeture)
 	{
 		this.dateFermeture = dateFermeture;
+	}
+
+	public void ajouterOperation(Operation operation)
+	{
+		operations.add(operation);
+
 	}
 }
