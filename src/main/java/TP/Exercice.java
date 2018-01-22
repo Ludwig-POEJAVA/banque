@@ -1,6 +1,8 @@
 package TP;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 import fr.formation.banque.Compte;
@@ -16,24 +18,25 @@ import fr.formation.banque.Virement;
 
 public class Exercice
 {
-	static ArrayList<Portefeuille> portefeuilles = new ArrayList<Portefeuille>();
-	static ArrayList<Compte> comptes = new ArrayList<Compte>();
-	static ArrayList<Operation> operations = new ArrayList<Operation>();
+	// static ArrayList<Portefeuille> portefeuilles = new ArrayList<Portefeuille>();
+	static Hashtable<String, Portefeuille> portefeuilles = new Hashtable<String, Portefeuille>();
+	static Hashtable<String, Compte> comptes = new Hashtable<String, Compte>();
+	// static ArrayList<Operation> operations = new ArrayList<Operation>();
+	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String... args) throws Exception
 	{
 
 		boolean fini = false;
-		Scanner scan = new Scanner(System.in);
 
 		while (!fini)
 		{
-			fini = menuMain(fini, scan);
+			fini = menuMain(fini);
 		}
 		scan.close();
 	}
 
-	private static boolean menuMain(boolean fini, Scanner scan)
+	private static boolean menuMain(boolean fini)
 	{
 		int prompt;
 		System.out.println("GESTION DE COMPTES BANCAIRES");
@@ -47,10 +50,10 @@ public class Exercice
 		switch (prompt)
 		{
 			case 1:
-				menuAfficher(scan);
+				menuAfficher();
 				break;
 			case 2:
-				menuCreer(scan);
+				menuCreer();
 				break;
 			case 3:
 				break;
@@ -63,7 +66,7 @@ public class Exercice
 		return fini;
 	}
 
-	private static void menuCreer(Scanner scan)
+	private static void menuCreer()
 	{
 		int prompt;
 		boolean fini_creer = false;
@@ -83,10 +86,10 @@ public class Exercice
 					// menuAfficher(scan);
 					break;
 				case 2:
-					menuCreer(scan);
+					creerCompte();
 					break;
 				case 3:
-					creerPortefeuille(scan);
+					creerPortefeuille();
 					break;
 				case 4:
 					fini_creer = true;
@@ -97,7 +100,29 @@ public class Exercice
 		}
 	}
 
-	private static void creerPortefeuille(Scanner scan)
+	private static void creerCompte()
+	{
+		String numero;
+		String libelle;
+		Date dateOuverture;
+		Date dateFermeture;
+
+		System.out.println("> LIBELLE DE COMPTE ?");
+		libelle = scan.next();
+
+		// System.out.println("> NOM DE BANQUE DE PORTEFEUILLE ?");
+		// nomBanque = scan.next();
+
+		// while (portefeuilles.containsKey(libelle))
+		{
+			// System.out.println("> LIBELLE DE PORTEFEUILLE ? (UNIQUE. '" + libelle + "'
+			// EXISTE DEJA)");
+			// libelle = scan.next();
+		}
+		// portefeuilles.put(libelle, new Portefeuille(libelle, nomBanque));
+	}
+
+	private static void creerPortefeuille()
 	{
 		String libelle;
 		String nomBanque;
@@ -106,11 +131,15 @@ public class Exercice
 		System.out.println("> NOM DE BANQUE DE PORTEFEUILLE ?");
 		nomBanque = scan.next();
 
-		portefeuilles.add(new Portefeuille(libelle, nomBanque));
-
+		while (portefeuilles.containsKey(libelle))
+		{
+			System.out.println("> LIBELLE DE PORTEFEUILLE ? (UNIQUE. '" + libelle + "' EXISTE DEJA)");
+			libelle = scan.next();
+		}
+		portefeuilles.put(libelle, new Portefeuille(libelle, nomBanque));
 	}
 
-	private static void menuAfficher(Scanner scan)
+	private static void menuAfficher()
 	{
 		System.out.println("AFFICHAGE DES INFOS");
 		System.out.println(" 1 - Afficher portefeuille(s)");
